@@ -30,7 +30,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Etapa 6: Copiar el Proyecto
+# Etapa 6: Copiar el Proyecto#
 COPY . .
 
 # Etapa 7: Puerto que expone el contenedor
