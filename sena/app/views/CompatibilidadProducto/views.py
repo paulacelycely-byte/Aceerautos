@@ -33,7 +33,7 @@ class AdminOMecanicoMixin(UserPassesTestMixin):
 # ── 1. LISTADO — Mecánico puede ver ──────────────────────────────
 class CompatibilidadListView(LoginRequiredMixin, AdminOMecanicoMixin, ListView):
     model = CompatibilidadProducto
-    template_name = 'compatibilidadProducto/listar.html'
+    template_name = 'CompatibilidadProducto/listar.html'
     context_object_name = 'compatibilidades'
 
     def get_context_data(self, **kwargs):
