@@ -36,5 +36,6 @@ COPY . .
 # Etapa 7: Puerto que expone el contenedor
 EXPOSE 8000
 
-# Etapa 8: Comando por defecto (desarrollo con runserver)
-CMD python manage.py migrate && python manage.py createsuperuser --noinput || true && python manage.py runserver 0.0.0.0:$PORT
+CMD python manage.py migrate --noinput && \
+    (python manage.py createsuperuser --noinput || true) && \
+    python manage.py runserver 0.0.0.0:$PORT
