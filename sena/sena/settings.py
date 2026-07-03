@@ -11,13 +11,12 @@ load_dotenv(BASE_DIR / '.env')
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-(1x7w0^_8zvx$7z$@4z!j+31!r0@=13vs0@qby2-ac8xuj#c=u')
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-# ========== HOSTS PERMITIDOS (agregado .onrender.com) ==========
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '.onrender.com']
 
-# ========== CSRF - ajusta esta URL a la tuya real de Render ==========
 CSRF_TRUSTED_ORIGINS = [
-    'https://TU-SERVICIO.onrender.com',
+    'https://aceerautos-y4w0.onrender.com',
 ]
+
 
 INSTALLED_APPS = [
     'django.contrib.auth',
@@ -70,19 +69,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'sena.wsgi.application'
 
 
-# ========= BASE DE DATOS MySQL =========
+# ========== BASE DE DATOS ==========
+# SQLite para todo: desarrollo local, CI y Render (datos de prueba, no persistentes)
 DATABASES = {
     'default': {
-        'ENGINE':   'django.db.backends.mysql',
-        'NAME':     os.environ.get('DB_NAME', 'proyectooooo'),
-        'USER':     os.environ.get('DB_USER', 'root'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', '12345678'),
-        'HOST':     os.environ.get('DB_HOST', 'localhost'),
-        'PORT':     os.environ.get('DB_PORT', '3306'),
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
